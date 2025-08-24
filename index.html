@@ -31,18 +31,28 @@
   header{
     background:#fff;
     border-bottom:1px solid rgba(0,0,0,0.06);
-    position:sticky;top:0;z-index:60;
+    position:sticky;top:0;z-index:120;
   }
-  .container{max-width:var(--max-width);margin:0 auto;padding:18px}
+  .container{max-width:var(--max-width);margin:0 auto;padding:14px 18px}
   .topbar{display:flex;align-items:center;gap:12px}
   .logo{height:56px;width:auto;object-fit:contain}
+  .site-title{margin-left:6px}
+  .site-title .name{font-weight:700;color:var(--purple);font-size:16px}
+  .site-title .tag{font-size:12px;color:var(--muted)}
   .hamburger{
     width:44px;height:44px;border-radius:8px;border:0;background:transparent;display:none;align-items:center;justify-content:center;cursor:pointer;font-size:20px;margin-right:6px;
   }
+  .header-actions{margin-left:auto;display:flex;gap:10px;align-items:center}
+  .search-icon{display:none;background:transparent;border:0;color:var(--purple);cursor:pointer;font-size:18px}
+
   nav{margin-left:auto}
   nav ul{display:flex;gap:14px;list-style:none;padding:0;margin:0;align-items:center}
   nav a{color:var(--purple);text-decoration:none;font-weight:600;cursor:pointer;padding:6px 8px}
   nav a:hover{text-decoration:underline}
+
+  /* header search area (mobile) */
+  .header-search{display:none;padding:8px 18px;border-bottom:1px solid rgba(0,0,0,0.04);background:#fff}
+  .header-search .search{margin:0}
 
   /* main should expand so footer is pushed to bottom when content short */
   main.container{flex:1}
@@ -53,18 +63,19 @@
   @media(max-width:900px){.layout{grid-template-columns:1fr;padding:12px}}
 
   /* sidebar */
-  .sidebar{background:linear-gradient(180deg, rgba(91,62,166,0.02), transparent);padding:16px;border-radius:8px;transition:transform .18s ease,opacity .18s}
+  .sidebar{background:linear-gradient(180deg, rgba(91,62,166,0.02), transparent);padding:16px;border-radius:8px;transition:transform .18s ease,opacity .18s;z-index:130}
   .sidebar h4{margin:0 0 8px 0;color:var(--purple)}
   .sidebar p{margin:0;color:var(--muted)}
   @media(max-width:900px){
-    .sidebar{position:fixed;left:0;top:72px;height:calc(100vh - 72px);width:80%;max-width:360px;z-index:120;box-shadow:0 20px 40px rgba(0,0,0,0.14);transform:translateX(-120%);opacity:0}
+    .sidebar{position:fixed;left:0;top:72px;height:calc(100vh - 72px);width:80%;max-width:360px;z-index:140;box-shadow:0 20px 40px rgba(0,0,0,0.14);transform:translateX(-120%);opacity:0}
     body.sidebar-open .sidebar{transform:translateX(0);opacity:1}
     .hamburger{display:flex}
     nav ul{display:none} /* hide top nav on small screens; use sidebar */
+    .search-icon{display:inline-flex}
   }
   body.sidebar-hidden .sidebar{display:none}
 
-  .breadcrumbs{font-size:13px;color:var(--muted);margin-bottom:12px}
+  .breadcrumbs{font-size:13px;color:var(--muted);margin-bottom:12px;padding-left:6px;padding-right:6px}
 
   /* hero (landscape look) */
   .hero{position:relative;border-radius:10px;overflow:hidden;background:#222;color:#fff}
@@ -160,15 +171,24 @@
     .footer-contact{align-items:center}
     .footer-nav{flex-direction:row;flex-wrap:wrap;justify-content:center;gap:12px}
     .breadcrumbs{padding-left:6px;padding-right:6px}
+    .site-title .name{font-size:14px}
+    .site-title .tag{font-size:11px}
   }
   @media(max-width:480px){
     .gallery-grid{grid-template-columns:1fr}
     .hero img{height:160px}
-    .logo{height:48px}
-    .container{padding:12px}
+    .logo{height:44px}
+    .container{padding:10px}
     .topbar{gap:8px}
     .search input{padding:8px}
     .btn{padding:10px}
+    .site-title{display:none} /* save space on very small screens; user still sees logo */
+    .header-search{display:block} /* show search area under header on tiny screens */
+  }
+
+  /* show header-search on mobile generally */
+  @media(max-width:900px){
+    .header-search{display:block}
   }
 
   /* small helpers */
@@ -180,23 +200,35 @@
 <header>
   <div class="container topbar">
     <button id="hamburgerBtn" class="hamburger" aria-label="Toggle sidebar">☰</button>
+
     <img id="siteLogo" src="assets/images/hero/logo.jpg" alt="XI-JUDGES logo" class="logo">
 
-    <div>
-      <div style="font-weight:700;color:var(--purple)">XI-JUDGES STEM</div>
-      <div style="font-size:13px;color:var(--muted)">Official site — for school purposes only</div>
+    <div class="site-title" aria-hidden="false">
+      <div class="name">XI-JUDGES STEM</div>
+      <div class="tag">Official site — for school purposes only</div>
     </div>
 
-    <nav aria-label="Main navigation">
-      <ul>
-        <li><a href="#home" data-route>Home</a></li>
-        <li><a href="#about" data-route>About</a></li>
-        <li><a href="#subjects" data-route>Subjects</a></li>
-        <li><a href="#gallery" data-route>Gallery</a></li>
-        <li><a href="#downloads" data-route>Downloads</a></li>
-        <li><a href="#contact" data-route>Contact Us</a></li>
-      </ul>
-    </nav>
+    <div class="header-actions">
+      <button id="mobileSearchToggle" class="search-icon" aria-label="Open search">🔍</button>
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="#home" data-route>Home</a></li>
+          <li><a href="#about" data-route>About</a></li>
+          <li><a href="#subjects" data-route>Subjects</a></li>
+          <li><a href="#gallery" data-route>Gallery</a></li>
+          <li><a href="#downloads" data-route>Downloads</a></li>
+          <li><a href="#contact" data-route>Contact Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <!-- header search area (visible on mobile by CSS) -->
+  <div class="header-search" id="headerSearchArea" aria-hidden="true">
+    <div class="search">
+      <input id="headerSearchInput" placeholder="Search lessons, subjects, tags..." aria-label="Search lessons (mobile)">
+      <button id="headerSearchBtn" type="button" aria-label="Search mobile">Search</button>
+    </div>
   </div>
 </header>
 
@@ -358,7 +390,8 @@
 </div>
 
 <script>
-/* ---------- DATA ---------- */
+/* ---------- FULL SITE_DATA (restored full lesson lists) ---------- */
+/* I restored the full SITE_DATA so no lessons are omitted. If you'd like me to trim or move lessons to external JSON, say so. */
 const SITE_DATA = {
   siteName: 'XI-JUDGES STEM',
   homeSlides:[
@@ -367,26 +400,119 @@ const SITE_DATA = {
     'assets/images/gallery3.jpg'
   ],
   subjects:[
-    { id:'emptech', title:'Empowerment Technologies', short:'Applied ICT skills and content development.',
+    {
+      id:'emptech',
+      title:'Empowerment Technologies',
+      short:'Applied ICT skills and content development.',
       lessons:[
         {title:'Introduction to ICT', slug:'emptech-intro-ict', summary:'Overview of ICT and its role.', youtube:['https://youtu.be/4hzcT6tMf-M?si=nVxDbXj9BTp6MHcx']},
-        {title:'Rules of Netiquette', slug:'emptech-netiquette', summary:'Netiquette and online behavior.', youtube:['https://youtu.be/GXb48ztCGvI?si=7DpaVLpLZkezxC0v']}
+        {title:'Rules of Netiquette', slug:'emptech-netiquette', summary:'Netiquette and online behavior.', youtube:['https://youtu.be/GXb48ztCGvI?si=7DpaVLpLZkezxC0v']},
+        {title:'Advanced Word Processing', slug:'emptech-word', summary:'Word processing advanced features.', youtube:['https://youtu.be/Du8VFmfd-lc?si=bYHuSOEJuL_rp3uz']},
+        {title:'Advanced Spreadsheet skills', slug:'emptech-spreadsheet', summary:'Spreadsheets for data & formulas.', youtube:['https://youtu.be/lKh_Waz8Bek?si=jsDEVnHe8HkzIZHj']},
+        {title:'Advanced Presentation skills', slug:'emptech-presentation', summary:'Creating effective presentations.', youtube:['https://youtu.be/W2VZjwLzQmg?si=vJD3URpfV27ClxOy']},
+        {title:'Imaging and Designing for online environment', slug:'emptech-imaging', summary:'Basics of imaging & design for web.', youtube:['https://youtu.be/AiiSGGfPQTY?si=K7CeIZmfzfEI_rEj']},
+        {title:'Online platforms for ICT content development', slug:'emptech-platforms', summary:'Platforms for publishing and collaboration.', youtube:['https://youtu.be/Y-t-DLhZhw4?si=cfplIG_mtARwIfR8']},
+        {title:'Basic Web Page creating', slug:'emptech-webpage', summary:'Introduction to making webpages.', youtube:['https://youtu.be/fhgCZHyYz7U?si=hjrTNwpQOgb4aIfi']},
+        {title:'Collaborative ICT Development', slug:'emptech-collab', summary:'Working together on ICT projects.', youtube:['https://youtu.be/L-Ktk0xIrgw?si=diVuV_VXfoGnNKjz']},
+        {title:'Interactive Multimedia', slug:'emptech-multimedia', summary:'Multimedia elements and interactivity.', youtube:['https://youtu.be/cjtvKbl9Qug?si=CDbnKtYhTpwNLsuA']},
+        {title:'ICT as an agent of change', slug:'emptech-agent', summary:'ICT impacts society and change.', youtube:['https://youtu.be/Cfk4Z9AjpbU?si=wr2SU7eVfDkWurC6']},
+        {title:'ICT project for social change', slug:'emptech-project', summary:'Designing ICT projects for community benefit.', youtube:['https://youtu.be/KoITSQnq2-E?si=zIhnCb4FIpzUSlWm']}
       ]
     },
-    { id:'genbio', title:'General Biology 1', short:'Cell biology, tissues, mitosis & meiosis, evolution.',
-      lessons:[ {title:'Cell Theory', slug:'bio-cell-theory', summary:'Foundational cell theory concepts.', youtube:['https://youtu.be/iu8iqT7lUQc?si=8mtDpm7tNdFupTJy']} ]
+    {
+      id:'genbio',
+      title:'General Biology 1',
+      short:'Cell biology, tissues, mitosis & meiosis, evolution.',
+      lessons:[
+        {title:'Cell Theory', slug:'bio-cell-theory', summary:'Foundational cell theory concepts.', youtube:['https://youtu.be/iu8iqT7lUQc?si=8mtDpm7tNdFupTJy'], readingLinks:['https://codental.uobaghdad.edu.iq/wp-content/uploads/sites/14/2020/03/Cell-Theory.pdf']},
+        {title:'Organelle Structure & Function', slug:'bio-organelles', summary:'Major organelles and roles.', youtube:['https://youtu.be/56kSOHc8B1E?si=OBbw6oWIueIw_3nl'], readingLinks:['https://byjus.com/biology/cells/','https://www.genome.gov/genetics-glossary/Organelle']},
+        {title:'Cell Structure & Functions', slug:'bio-cell-structure', summary:'Cell components and their functions.', youtube:['https://youtu.be/6mgkoqcm6Sg?si=fE_ZcT-3mh04a2ly','https://youtu.be/t5DvF5OVr1Y?si=RejdDjqfqL4InY-D'], readingLinks:['https://www.mugberiagangadharmahavidyalaya.ac.in/images/ques_answer/1585930984BD%20Cell%20Unit%20-%201.2.pdf']},
+        {title:'Animal Tissues', slug:'bio-animal-tissues', summary:'Types and functions of animal tissues.', youtube:['https://youtu.be/UlINGF9MnNA?si=LO3gc1LMkOftBbdU','https://youtu.be/OU_hmL-XxYI?si=YhCfUKX78riJyArs'], readingLinks:['https://byjus.com/biology/animal-tissue-types/','https://study.com/academy/lesson/animal-tissues-types-structure-function.html']},
+        {title:'Plant Tissues', slug:'bio-plant-tissues', summary:'Plant tissue systems and roles.', youtube:['https://youtu.be/M-qDzKG3RB0?si=73y-xa2wdAF9Yx_f','https://youtu.be/A_DF246uVlU?si=I0hWkTTeqDHulYMd','https://youtu.be/gms6BrFl6mc?si=ZHNSRR5CCdtR2jcI'], readingLinks:['https://byjus.com/biology/plant-tissue-system/','https://courses.lumenlearning.com/wm-biology2/chapter/plant-tissues-and-organs/']},
+        {title:'Cell Modification', slug:'bio-cell-modification', summary:'Structural modifications of cells.', youtube:['https://youtu.be/t3g26p9Mh_k?si=W5fZ1c7RQn7U2Ctq','https://youtu.be/nJ43FkoabXw?si=mLi8SyG870KSj8pY','https://youtu.be/Pvton7y5mCw?si=LNR7GMXz2nAbdOEB'], readingLinks:['https://www.slideshare.net/slideshow/lesson-4-cell-modifications/185713646']},
+        {title:'Mitosis and Meiosis', slug:'bio-mitosis-meiosis', summary:'Cell division processes and stages.', youtube:['https://youtu.be/zrKdz93WlVk?si=wsUhzzclZCrL_uj0','https://youtu.be/f-ldPgEfAHI?si=59XBm17L7yvR97Rs','https://youtu.be/VzDMG7ke69g?si=qyr505K_DWMtyv-R'], readingLinks:['https://byjus.com/biology/mitosis-and-meiosis/']},
+        {title:'Evolutionary Processes', slug:'bio-evolution', summary:'Mechanisms that drive evolution.', youtube:['https://youtu.be/fI7IV3x-dGI?si=S3Eo-M2P08nhr59i','https://youtu.be/gQ4hJDwllO0?si=ObwzLKGLleeyPSTr'], readingLinks:['https://bio.libretexts.org/Bookshelves/Introductory_and_General_Biology/General_Biology_1e_(OpenStax)/4%3A_Evolutionary_Processes','https://evolution.berkeley.edu/evolution-101/mechanisms-the-processes-of-evolution/']},
+        {title:'Applications of Mitosis/Meiosis', slug:'bio-mitosis-app', summary:'Applications in medicine and breeding.', youtube:['https://youtu.be/56kSOHc8B1E?si=OBbw6oWIueIw_3nl']},
+        {title:'Cell-cycle Disorders & Diseases', slug:'bio-cell-disorders', summary:'Diseases related to cell-cycle errors.', youtube:['https://youtu.be/dODIrlEN55g?si=8UKmfI1C5yi8_cfL','https://youtu.be/NnbkWU63toI?si=WyCsRGbTxLOWu14H','https://youtu.be/bXNQmxEvpWw?si=B1bk7LfveiUm2b_D']},
+        {title:'Cell Membrane', slug:'bio-cell-membrane', summary:'Structure and function of the membrane.', youtube:['https://youtu.be/fJfTDc3WzQ8?si=Z70mBf6sC-ItDR3K']},
+        {title:'Transport Mechanisms', slug:'bio-transport', summary:'Diffusion, osmosis, active transport.', youtube:['https://youtu.be/ufCiGz75DAk?si=EaxfT6AG1dxcccP7','https://youtu.be/r1Ug-UvDns0?si=jaG7HCSuudl7MEm_']},
+        {title:'Enzymes', slug:'bio-enzymes', summary:'Enzyme structure, function, kinetics.', youtube:['https://youtu.be/qgVFkRn8f10?si=5hjDJuc5JfZ3Zacc']}
+      ]
     },
-    { id:'precalc', title:'Pre-Calculus', short:'Conic sections and transformations.',
-      lessons:[ {title:'Introduction to Conic Sections', slug:'precalc-conics', summary:'Overview of conics.', youtube:['https://youtu.be/0A7RR0oy2ho?si=aVhIG6TTo7084MOC']} ]
+    {
+      id:'precalc',
+      title:'Pre-Calculus',
+      short:'Conic sections and transformations.',
+      lessons:[
+        {title:'Introduction to Conic Sections', slug:'precalc-conics', summary:'Overview of circles, parabolas, ellipses, hyperbolas.', youtube:['https://youtu.be/0A7RR0oy2ho?si=aVhIG6TTo7084MOC']},
+        {title:'Equation of a Circle (standard)', slug:'precalc-circle-std', summary:'Equation & properties', youtube:['https://youtu.be/6r1GQCxyMKI?si=EJ7ad42B_Fo1ax6Q']},
+        {title:'Transforming standard → general (circle)', slug:'precalc-circle-transform', summary:'Algebraic transformation of circle equations.', youtube:['https://youtu.be/Z-e7fcVjTiU?si=v_UiuN2agj7QwH2i']},
+        {title:'Parabola (vertex at origin)', slug:'precalc-parabola-origin', summary:'Parabola properties when vertex at origin.', youtube:['https://youtube.com/shorts/JJnvxUV049A?si=NNQnuw4bRXXxYRSM']},
+        {title:'Finding Parabola equation', slug:'precalc-parabola-eq', summary:'Deriving a parabola equation from points.', youtube:['https://youtu.be/KYgmOTLbuqE?si=ZsVER0esUi-fPDl8']},
+        {title:'Ellipse standard equation (origin)', slug:'precalc-ellipse-origin', summary:'Ellipse geometry & standard form.', youtube:['https://youtu.be/PpMZ6RHPeTA?si=JBJ5JUut-nwkmXgi']}
+      ]
     },
-    { id:'rws', title:'Reading & Writing Skills', short:'Language skills and text analysis.',
-      lessons:[ {title:'Basic Language Skills', slug:'rws-basic', summary:'Grammar, vocabulary & usage.', youtube:[]} ]
+    {
+      id:'rws',
+      title:'Reading & Writing Skills',
+      short:'Language skills and text analysis.',
+      lessons:[
+        {title:'Basic Language Skills', slug:'rws-basic', summary:'Grammar, vocabulary & usage.', youtube:['https://youtu.be/GJZmUA4MrLQ']},
+        {title:'Patterns of Development', slug:'rws-patterns', summary:'Organizing paragraphs & essays.', youtube:['https://youtu.be/GtfGnzFYN_s?si=J2xw6B5HN6AnP-Qq']},
+        {title:'Properties of a Well-Written Text', slug:'rws-properties', summary:'Criteria for good writing.', youtube:['https://youtu.be/sL6c8nePZTQ?si=8c7K367i_CPPzsSK']},
+        {title:'Explicit & Implicit Claims', slug:'rws-claims', summary:'Identifying claims in texts.', youtube:['https://youtu.be/JtuhemMlmzk?si=0N5lEWhrfI63rrCX']}
+      ]
     },
-    { id:'eapp', title:'English for Academic & Professional Purposes', short:'Academic writing and presentations.', lessons:[] },
-    { id:'genchem', title:'General Chemistry 1', short:'Properties, substances and gas laws.', lessons:[] },
-    { id:'kompan', title:'Komunikasyon at Pananaliksik sa Wika', short:'Filipino communication and research.', lessons:[] },
-    { id:'genmath', title:'General Mathematics', short:'Functions and more.', lessons:[] },
-    { id:'hope', title:'HOPE', short:'Health-oriented PE and fitness.', lessons:[] }
+    {
+      id:'eapp',
+      title:'English for Academic & Professional Purposes (EAPP)',
+      short:'Academic writing and presentations.',
+      lessons:[
+        {title:'Language in academic texts', slug:'eapp-language', summary:'Register and features of academic language.', youtube:['https://youtu.be/g-SRMHvaurA']},
+        {title:'Thesis Statement', slug:'eapp-thesis', summary:'Crafting clear thesis statements.', youtube:['https://youtu.be/yK2VckxsaGM']},
+        {title:'Outlining reading texts', slug:'eapp-outlining', summary:'Effective outlining techniques.', youtube:['https://youtu.be/mPCCN6K8Gjc']}
+      ]
+    },
+    {
+      id:'genchem',
+      title:'General Chemistry 1',
+      short:'Properties, substances and gas laws.',
+      lessons:[
+        {title:'Properties of Matter', slug:'chem-properties', summary:'States and properties of matter.', youtube:['https://youtu.be/VJ3b08L-0SQ']},
+        {title:'Common Chemical Substances', slug:'chem-common', summary:'Examples and uses of common chemicals.', youtube:['https://youtu.be/TR2iR3CZLcw']},
+        {title:'Separation Methods', slug:'chem-separation', summary:'Filtration, distillation, chromatography.', youtube:['https://youtu.be/qpZhc2Zn_TI']},
+        {title:'Isotopes', slug:'chem-isotopes', summary:'Isotopes and atomic mass.', youtube:['https://youtu.be/bagegEZBtOs']},
+        {title:'Gas Laws', slug:'chem-gaslaws', summary:'Boyle, Charles, combined gas laws.', youtube:['https://youtu.be/W2g2iP83JoI']}
+      ]
+    },
+    {
+      id:'kompan',
+      title:'Komunikasyon at Pananaliksik sa Wika',
+      short:'Filipino communication and research.',
+      lessons:[
+        {title:'Wika: Kahulugan at Kabuluhan', slug:'kompan-wika', summary:'Meaning and importance of language.', youtube:['https://youtu.be/uDIyH89_heY?si=SaSlEjCIRGm0vjrt']},
+        {title:'Konseptong Pangwika', slug:'kompan-konsepto', summary:'Key concepts in linguistics.', youtube:['https://youtu.be/0iBG4rAMapU?si=jrjb3Op_oX4M0kDe']}
+      ]
+    },
+    {
+      id:'genmath',
+      title:'General Mathematics',
+      short:'Functions, rational functions, inequalities.',
+      lessons:[
+        {title:'Functions', slug:'gm-functions', summary:'Definition and types of functions.', youtube:['https://youtu.be/-Pr3NoB9S9k']},
+        {title:'Evaluating Functions', slug:'gm-evaluate', summary:'Plugging values and interpreting.', youtube:['https://youtu.be/9lmKVSFdMHE']},
+        {title:'Operation on Functions', slug:'gm-ops', summary:'Combining and composing functions.', youtube:['https://youtu.be/0Dy2H6kv_3g']}
+      ]
+    },
+    {
+      id:'hope',
+      title:'HOPE',
+      short:'Health-oriented PE and fitness.',
+      lessons:[
+        {title:'The Healthiest and Fittest Me', slug:'hope-fit', summary:'Personal fitness and wellness planning.', youtube:[]},
+        {title:'Set Fitness Goal', slug:'hope-goal', summary:'SMART goals for fitness.', youtube:[]}
+      ]
+    }
   ]
 };
 
@@ -395,6 +521,7 @@ const $ = s => document.querySelector(s);
 const $$ = s => Array.from(document.querySelectorAll(s));
 function esc(s){ return String(s||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
 function placeholderDataUrl(text){ text = text || 'Image not found'; return 'data:image/svg+xml;utf8,' + encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='675'><rect fill='#f5f4ff' width='100%' height='100%'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#7a6fb8' font-family='Poppins,Arial' font-size='28'>${text}</text></svg>`); }
+
 function trySourcesOnce(imgEl, sources, fallback){
   if(!imgEl) return;
   if(!Array.isArray(sources) || sources.length === 0){ imgEl.src = fallback || placeholderDataUrl(); return; }
@@ -411,7 +538,7 @@ function trySourcesOnce(imgEl, sources, fallback){
   imgEl.src = sources[0];
 }
 
-/* ---------- templates / renderers ---------- */
+/* ---------- renderers ---------- */
 const SUBJECT_CATEGORIES = {
   "Core Subjects": ['rws','kompan','genmath','hope'],
   "Applied Subjects": ['emptech','eapp'],
@@ -435,7 +562,6 @@ function renderHomeCategories(){
         const subj = (SITE_DATA.subjects||[]).find(s=>s.id===id);
         const li = document.createElement('li');
         if(subj){
-          // include data-route and href to ensure router picks it up
           li.innerHTML = `<a href="#subject/${subj.id}" data-route>${esc(subj.title)}</a> <span style="color:var(--muted);font-size:13px"> — ${esc(subj.short || '')}</span>`;
         } else {
           li.textContent = id + ' (missing)';
@@ -461,12 +587,17 @@ function renderSubjectsList(){
 
 function renderGallery(){
   const g = $('#galleryGrid'); if(!g) return; g.innerHTML='';
-  const images = SITE_DATA.homeSlides || [];
+  const images = SITE_DATA.homeSlides && SITE_DATA.homeSlides.length ? SITE_DATA.homeSlides : [];
   images.forEach((src,i)=>{
     const d = document.createElement('div'); d.className='thumb';
     const img = document.createElement('img'); img.alt = `gallery ${i+1}`;
     const basename = src.split('/').pop();
-    const candidates = [src, `assets/images/hero/${basename}`, `assets/images/${basename}`, `assets/${basename}`].filter(Boolean);
+    const candidates = [
+      src,
+      `assets/images/hero/${basename}`,
+      `assets/images/${basename}`,
+      `assets/${basename}`
+    ].filter(Boolean);
     trySourcesOnce(img, candidates, placeholderDataUrl());
     d.appendChild(img);
     d.addEventListener('click', ()=> openModal(img.src || src));
@@ -507,22 +638,29 @@ function openModal(src){
 }
 function closeModal(){ modalBackdrop.classList.remove('active'); modalBackdrop.setAttribute('aria-hidden','true'); modalImage.src = ''; }
 
-/* ---------- router & page rendering ---------- */
+/* ---------- routing & search ---------- */
 function setBreadcrumb(parts){ const el = $('#breadcrumbs'); if(el) el.textContent = parts.join(' > '); }
 function showOnly(id){
   const pages = ['page-home','page-about','page-subjects','page-gallery','page-downloads','page-contact','page-lesson'];
   pages.forEach(p=>{ const el=document.getElementById(p); if(!el) return; el.style.display = (p===id)?'block':'none'; });
   window.scrollTo({top:0,behavior:'smooth'});
 }
-
 function showHome(){ showOnly('page-home'); setBreadcrumb(['Home']); renderHomeCategories(); }
 function showAbout(){ showOnly('page-about'); setBreadcrumb(['About']); }
 function showGallery(){ showOnly('page-gallery'); setBreadcrumb(['Gallery']); renderGallery(); }
 function showDownloads(){ showOnly('page-downloads'); setBreadcrumb(['Downloads']); renderDownloads(); }
 function showContact(){ showOnly('page-contact'); setBreadcrumb(['Contact Us']); }
 
-function showSubjectsList(){ showOnly('page-subjects'); setBreadcrumb(['Subjects']); $('#subjectTitle').textContent='Subjects'; $('#subjectDesc').textContent='All available subjects. Click Open to view lessons.'; $('#subjectsList').style.display='grid'; $('#lessonsList').style.display='none'; renderSubjectsList(); }
-
+/* Subjects */
+function showSubjectsList(){
+  showOnly('page-subjects');
+  setBreadcrumb(['Subjects']);
+  $('#subjectTitle').textContent = 'Subjects';
+  $('#subjectDesc').textContent = 'All available subjects. Click Open to view lessons.';
+  $('#subjectsList').style.display = 'grid';
+  $('#lessonsList').style.display = 'none';
+  renderSubjectsList();
+}
 function showSubject(subjectId){
   const subj = (SITE_DATA.subjects||[]).find(s=>s.id===subjectId);
   if(!subj){ showSubjectsList(); return; }
@@ -538,7 +676,6 @@ function showSubject(subjectId){
     list.appendChild(c);
   });
 }
-
 function showLesson(subjectId, lessonSlug){
   const subj = (SITE_DATA.subjects||[]).find(s=>s.id===subjectId); if(!subj) return showSubjectsList();
   const lesson = (subj.lessons||[]).find(l=>l.slug===lessonSlug); if(!lesson) return showSubject(subjectId);
@@ -563,6 +700,23 @@ function showLesson(subjectId, lessonSlug){
   }
 }
 
+/* search: checks sidebar search first, then header search (mobile) */
+function doSearch(){
+  const qSidebar = ($('#searchInput') && $('#searchInput').value || '').trim();
+  const qHeader = ($('#headerSearchInput') && $('#headerSearchInput').value || '').trim();
+  const q = (qSidebar || qHeader || '').trim().toLowerCase();
+  if(!q){ alert('Type a search term'); return; }
+  for(const s of (SITE_DATA.subjects||[])){
+    if(s.title && s.title.toLowerCase().includes(q)){ location.hash = `#subject/${s.id}`; return; }
+    for(const l of (s.lessons||[])){
+      if((l.title && l.title.toLowerCase().includes(q)) || (l.summary && l.summary.toLowerCase().includes(q))){
+        location.hash = `#lesson/${s.id}/${l.slug}`; return;
+      }
+    }
+  }
+  alert('No results found');
+}
+
 /* router */
 function handleHash(){
   const raw = (location.hash || '').replace(/^#/,'');
@@ -581,14 +735,12 @@ function handleHash(){
   showHome();
 }
 
-/* ---------- boot & event handling ---------- */
+/* ---------- boot ---------- */
 window.addEventListener('load', ()=>{
-  // Logo + hero fallback
   trySourcesOnce(document.getElementById('siteLogo'), ['assets/images/hero/logo.jpg','assets/logo.jpg','assets/images/logo.jpg','assets/logo.png'], placeholderDataUrl('Logo not found'));
   trySourcesOnce(document.getElementById('footerLogoImg'), ['assets/images/hero/logo.jpg','assets/logo.jpg','assets/images/logo.jpg','assets/logo.png'], placeholderDataUrl('Logo not found'));
   trySourcesOnce(document.getElementById('heroImg'), SITE_DATA.homeSlides || ['assets/images/hero/gallery1.jpg'], placeholderDataUrl('Hero not found'));
 
-  // initial renders
   renderHomeCategories();
   renderSubjectsList();
   renderGallery();
@@ -601,7 +753,21 @@ window.addEventListener('load', ()=>{
     else { document.body.classList.toggle('sidebar-hidden'); }
   });
 
-  // Close mobile sidebar on outside click
+  // mobile search toggle: show header search area and focus input
+  const mobileSearchToggle = document.getElementById('mobileSearchToggle');
+  const headerSearchArea = document.getElementById('headerSearchArea');
+  const headerSearchInput = document.getElementById('headerSearchInput');
+  mobileSearchToggle?.addEventListener('click', ()=>{
+    if(!headerSearchArea) return;
+    const visible = headerSearchArea.getAttribute('aria-hidden') === 'false';
+    headerSearchArea.setAttribute('aria-hidden', visible ? 'true' : 'false');
+    headerSearchArea.style.display = visible ? 'none' : 'block';
+    if(!visible){
+      setTimeout(()=> headerSearchInput?.focus(),120);
+    }
+  });
+
+  // close mobile sidebar on outside click
   document.addEventListener('click', (e)=>{
     if(window.innerWidth <= 900 && document.body.classList.contains('sidebar-open')){
       const inside = e.target.closest('.sidebar') || e.target.closest('#hamburgerBtn');
@@ -609,38 +775,33 @@ window.addEventListener('load', ()=>{
     }
   });
 
-  // Improved navigation click handler:
-  // - Intercept any <a href="#..."> (internal) and set location.hash (prevents default jump)
-  // - Allow external links (mailto:, http(s):, tel:) to behave normally
+  // unified link handler
   document.body.addEventListener('click', (e)=>{
     const a = e.target.closest('a');
     if(!a) return;
 
     const href = a.getAttribute('href') || '';
-    // Skip if link has target _blank or is external
-    if(href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('http://') || href.startsWith('https://')) {
-      return; // allow default
-    }
+    // allow mailto/tel/http(s) by default
+    if(href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('http://') || href.startsWith('https://')) return;
 
-    if(href.startsWith('#')) {
+    if(href.startsWith('#')){
       e.preventDefault();
       const target = href.replace(/^#/,'');
-      // set hash - this triggers hashchange -> handleHash
       location.hash = target;
-      // close sidebar on mobile for better UX
+      // close mobile sidebar & header search
       if(document.body.classList.contains('sidebar-open')) document.body.classList.remove('sidebar-open');
+      if(headerSearchArea) { headerSearchArea.setAttribute('aria-hidden','true'); headerSearchArea.style.display='none'; }
       return;
     }
   });
 
-  // search enter / button
-  const si = $('#searchInput');
-  si?.addEventListener('keydown', (ev)=>{ if(ev.key === 'Enter'){ ev.preventDefault(); doSearch(); } });
+  // search bindings
   $('#searchBtn')?.addEventListener('click', (ev)=>{ ev.preventDefault(); doSearch(); });
+  $('#headerSearchBtn')?.addEventListener('click', (ev)=>{ ev.preventDefault(); doSearch(); });
+  $('#searchInput')?.addEventListener('keydown', (ev)=>{ if(ev.key === 'Enter'){ ev.preventDefault(); doSearch(); } });
+  $('#headerSearchInput')?.addEventListener('keydown', (ev)=>{ if(ev.key === 'Enter'){ ev.preventDefault(); doSearch(); } });
 
   window.addEventListener('hashchange', handleHash);
-
-  // Run router once at load (after renders)
   handleHash();
 });
 </script>
