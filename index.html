@@ -358,8 +358,7 @@
 </div>
 
 <script>
-/* ---------- FULL SITE_DATA ---------- */
-/* Note: first hero slide uses assets/images/hero/gallery1.jpg as requested */
+/* ---------- DATA ---------- */
 const SITE_DATA = {
   siteName: 'XI-JUDGES STEM',
   homeSlides:[
@@ -371,98 +370,31 @@ const SITE_DATA = {
     { id:'emptech', title:'Empowerment Technologies', short:'Applied ICT skills and content development.',
       lessons:[
         {title:'Introduction to ICT', slug:'emptech-intro-ict', summary:'Overview of ICT and its role.', youtube:['https://youtu.be/4hzcT6tMf-M?si=nVxDbXj9BTp6MHcx']},
-        {title:'Rules of Netiquette', slug:'emptech-netiquette', summary:'Netiquette and online behavior.', youtube:['https://youtu.be/GXb48ztCGvI?si=7DpaVLpLZkezxC0v']},
-        {title:'Advanced Word Processing', slug:'emptech-word', summary:'Word processing advanced features.', youtube:['https://youtu.be/Du8VFmfd-lc?si=bYHuSOEJuL_rp3uz']},
-        {title:'Advanced Spreadsheet skills', slug:'emptech-spreadsheet', summary:'Spreadsheets for data & formulas.', youtube:['https://youtu.be/lKh_Waz8Bek?si=jsDEVnHe8HkzIZHj']},
-        {title:'Advanced Presentation skills', slug:'emptech-presentation', summary:'Creating effective presentations.', youtube:['https://youtu.be/W2VZjwLzQmg?si=vJD3URpfV27ClxOy']},
-        {title:'Imaging and Designing for online environment', slug:'emptech-imaging', summary:'Basics of imaging & design for web.', youtube:['https://youtu.be/AiiSGGfPQTY?si=K7CeIZmfzfEI_rEj']},
-        {title:'Online platforms for ICT content development', slug:'emptech-platforms', summary:'Platforms for publishing and collaboration.', youtube:['https://youtu.be/Y-t-DLhZhw4?si=cfplIG_mtARwIfR8']},
-        {title:'Basic Web Page creating', slug:'emptech-webpage', summary:'Introduction to making webpages.', youtube:['https://youtu.be/fhgCZHyYz7U?si=hjrTNwpQOgb4aIfi']},
-        {title:'Collaborative ICT Development', slug:'emptech-collab', summary:'Working together on ICT projects.', youtube:['https://youtu.be/L-Ktk0xIrgw?si=diVuV_VXfoGnNKjz']},
-        {title:'Interactive Multimedia', slug:'emptech-multimedia', summary:'Multimedia elements and interactivity.', youtube:['https://youtu.be/cjtvKbl9Qug?si=CDbnKtYhTpwNLsuA']},
-        {title:'ICT as an agent of change', slug:'emptech-agent', summary:'ICT impacts society and change.', youtube:['https://youtu.be/Cfk4Z9AjpbU?si=wr2SU7eVfDkWurC6']},
-        {title:'ICT project for social change', slug:'emptech-project', summary:'Designing ICT projects for community benefit.', youtube:['https://youtu.be/KoITSQnq2-E?si=zIhnCb4FIpzUSlWm']}
+        {title:'Rules of Netiquette', slug:'emptech-netiquette', summary:'Netiquette and online behavior.', youtube:['https://youtu.be/GXb48ztCGvI?si=7DpaVLpLZkezxC0v']}
       ]
     },
     { id:'genbio', title:'General Biology 1', short:'Cell biology, tissues, mitosis & meiosis, evolution.',
-      lessons:[
-        {title:'Cell Theory', slug:'bio-cell-theory', summary:'Foundational cell theory concepts.', youtube:['https://youtu.be/iu8iqT7lUQc?si=8mtDpm7tNdFupTJy'], readingLinks:['https://codental.uobaghdad.edu.iq/wp-content/uploads/sites/14/2020/03/Cell-Theory.pdf']},
-        {title:'Organelle Structure & Function', slug:'bio-organelles', summary:'Major organelles and roles.', youtube:['https://youtu.be/56kSOHc8B1E?si=OBbw6oWIueIw_3nl'], readingLinks:['https://byjus.com/biology/cells/','https://www.genome.gov/genetics-glossary/Organelle']},
-        {title:'Cell Structure & Functions', slug:'bio-cell-structure', summary:'Cell components and their functions.', youtube:['https://youtu.be/6mgkoqcm6Sg?si=fE_ZcT-3mh04a2ly','https://youtu.be/t5DvF5OVr1Y?si=RejdDjqfqL4InY-D'], readingLinks:['https://www.mugberiagangadharmahavidyalaya.ac.in/images/ques_answer/1585930984BD%20Cell%20Unit%20-%201.2.pdf']},
-        {title:'Animal Tissues', slug:'bio-animal-tissues', summary:'Types and functions of animal tissues.', youtube:['https://youtu.be/UlINGF9MnNA?si=LO3gc1LMkOftBbdU','https://youtu.be/OU_hmL-XxYI?si=YhCfUKX78riJyArs'], readingLinks:['https://byjus.com/biology/animal-tissue-types/','https://study.com/academy/lesson/animal-tissues-types-structure-function.html']},
-        {title:'Plant Tissues', slug:'bio-plant-tissues', summary:'Plant tissue systems and roles.', youtube:['https://youtu.be/M-qDzKG3RB0?si=73y-xa2wdAF9Yx_f','https://youtu.be/A_DF246uVlU?si=I0hWkTTeqDHulYMd','https://youtu.be/gms6BrFl6mc?si=ZHNSRR5CCdtR2jcI'], readingLinks:['https://byjus.com/biology/plant-tissue-system/','https://courses.lumenlearning.com/wm-biology2/chapter/plant-tissues-and-organs/']},
-        {title:'Cell Modification', slug:'bio-cell-modification', summary:'Structural modifications of cells.', youtube:['https://youtu.be/t3g26p9Mh_k?si=W5fZ1c7RQn7U2Ctq','https://youtu.be/nJ43FkoabXw?si=mLi8SyG870KSj8pY','https://youtu.be/Pvton7y5mCw?si=LNR7GMXz2nAbdOEB'], readingLinks:['https://www.slideshare.net/slideshow/lesson-4-cell-modifications/185713646']},
-        {title:'Mitosis and Meiosis', slug:'bio-mitosis-meiosis', summary:'Cell division processes and stages.', youtube:['https://youtu.be/zrKdz93WlVk?si=wsUhzzclZCrL_uj0','https://youtu.be/f-ldPgEfAHI?si=59XBm17L7yvR97Rs','https://youtu.be/VzDMG7ke69g?si=qyr505K_DWMtyv-R'], readingLinks:['https://byjus.com/biology/mitosis-and-meiosis/']},
-        {title:'Evolutionary Processes', slug:'bio-evolution', summary:'Mechanisms that drive evolution.', youtube:['https://youtu.be/fI7IV3x-dGI?si=S3Eo-M2P08nhr59i','https://youtu.be/gQ4hJDwllO0?si=ObwzLKGLleeyPSTr'], readingLinks:['https://bio.libretexts.org/Bookshelves/Introductory_and_General_Biology/General_Biology_1e_(OpenStax)/4%3A_Evolutionary_Processes','https://evolution.berkeley.edu/evolution-101/mechanisms-the-processes-of-evolution/']},
-        {title:'Applications of Mitosis/Meiosis', slug:'bio-mitosis-app', summary:'Applications in medicine and breeding.', youtube:['https://youtu.be/56kSOHc8B1E?si=OBbw6oWIueIw_3nl']},
-        {title:'Cell-cycle Disorders & Diseases', slug:'bio-cell-disorders', summary:'Diseases related to cell-cycle errors.', youtube:['https://youtu.be/dODIrlEN55g?si=8UKmfI1C5yi8_cfL','https://youtu.be/NnbkWU63toI?si=WyCsRGbTxLOWu14H','https://youtu.be/bXNQmxEvpWw?si=B1bk7LfveiUm2b_D']},
-        {title:'Cell Membrane', slug:'bio-cell-membrane', summary:'Structure and function of the membrane.', youtube:['https://youtu.be/fJfTDc3WzQ8?si=Z70mBf6sC-ItDR3K']},
-        {title:'Transport Mechanisms', slug:'bio-transport', summary:'Diffusion, osmosis, active transport.', youtube:['https://youtu.be/ufCiGz75DAk?si=EaxfT6AG1dxcccP7','https://youtu.be/r1Ug-UvDns0?si=jaG7HCSuudl7MEm_']},
-        {title:'Enzymes', slug:'bio-enzymes', summary:'Enzyme structure, function, kinetics.', youtube:['https://youtu.be/qgVFkRn8f10?si=5hjDJuc5JfZ3Zacc']}
-      ]
+      lessons:[ {title:'Cell Theory', slug:'bio-cell-theory', summary:'Foundational cell theory concepts.', youtube:['https://youtu.be/iu8iqT7lUQc?si=8mtDpm7tNdFupTJy']} ]
     },
     { id:'precalc', title:'Pre-Calculus', short:'Conic sections and transformations.',
-      lessons:[
-        {title:'Introduction to Conic Sections', slug:'precalc-conics', summary:'Overview of circles, parabolas, ellipses, hyperbolas.', youtube:['https://youtu.be/0A7RR0oy2ho?si=aVhIG6TTo7084MOC']},
-        {title:'Equation of a Circle (standard)', slug:'precalc-circle-std', summary:'Equation & properties', youtube:['https://youtu.be/6r1GQCxyMKI?si=EJ7ad42B_Fo1ax6Q']},
-        {title:'Transforming standard → general (circle)', slug:'precalc-circle-transform', summary:'Algebraic transformation of circle equations.', youtube:['https://youtu.be/Z-e7fcVjTiU?si=v_UiuN2agj7QwH2i']},
-        {title:'Parabola (vertex at origin)', slug:'precalc-parabola-origin', summary:'Parabola properties when vertex at origin.', youtube:['https://youtube.com/shorts/JJnvxUV049A?si=NNQnuw4bRXXxYRSM']},
-        {title:'Finding Parabola equation', slug:'precalc-parabola-eq', summary:'Deriving a parabola equation from points.', youtube:['https://youtu.be/KYgmOTLbuqE?si=ZsVER0esUi-fPDl8']},
-        {title:'Ellipse standard equation (origin)', slug:'precalc-ellipse-origin', summary:'Ellipse geometry & standard form.', youtube:['https://youtu.be/PpMZ6RHPeTA?si=JBJ5JUut-nwkmXgi']}
-      ]
+      lessons:[ {title:'Introduction to Conic Sections', slug:'precalc-conics', summary:'Overview of conics.', youtube:['https://youtu.be/0A7RR0oy2ho?si=aVhIG6TTo7084MOC']} ]
     },
     { id:'rws', title:'Reading & Writing Skills', short:'Language skills and text analysis.',
-      lessons:[
-        {title:'Basic Language Skills', slug:'rws-basic', summary:'Grammar, vocabulary & usage.', youtube:['https://youtu.be/GJZmUA4MrLQ']},
-        {title:'Patterns of Development', slug:'rws-patterns', summary:'Organizing paragraphs & essays.', youtube:['https://youtu.be/GtfGnzFYN_s?si=J2xw6B5HN6AnP-Qq']},
-        {title:'Properties of a Well-Written Text', slug:'rws-properties', summary:'Criteria for good writing.', youtube:['https://youtu.be/sL6c8nePZTQ?si=8c7K367i_CPPzsSK']},
-        {title:'Explicit & Implicit Claims', slug:'rws-claims', summary:'Identifying claims in texts.', youtube:['https://youtu.be/JtuhemMlmzk?si=0N5lEWhrfI63rrCX']}
-      ]
+      lessons:[ {title:'Basic Language Skills', slug:'rws-basic', summary:'Grammar, vocabulary & usage.', youtube:[]} ]
     },
-    { id:'eapp', title:'English for Academic & Professional Purposes (EAPP)', short:'Academic writing and presentations.',
-      lessons:[
-        {title:'Language in academic texts', slug:'eapp-language', summary:'Register and features of academic language.', youtube:['https://youtu.be/g-SRMHvaurA']},
-        {title:'Thesis Statement', slug:'eapp-thesis', summary:'Crafting clear thesis statements.', youtube:['https://youtu.be/yK2VckxsaGM']},
-        {title:'Outlining reading texts', slug:'eapp-outlining', summary:'Effective outlining techniques.', youtube:['https://youtu.be/mPCCN6K8Gjc']}
-      ]
-    },
-    { id:'genchem', title:'General Chemistry 1', short:'Properties, substances and gas laws.',
-      lessons:[
-        {title:'Properties of Matter', slug:'chem-properties', summary:'States and properties of matter.', youtube:['https://youtu.be/VJ3b08L-0SQ']},
-        {title:'Common Chemical Substances', slug:'chem-common', summary:'Examples and uses of common chemicals.', youtube:['https://youtu.be/TR2iR3CZLcw']},
-        {title:'Separation Methods', slug:'chem-separation', summary:'Filtration, distillation, chromatography.', youtube:['https://youtu.be/qpZhc2Zn_TI']},
-        {title:'Isotopes', slug:'chem-isotopes', summary:'Isotopes and atomic mass.', youtube:['https://youtu.be/bagegEZBtOs']},
-        {title:'Gas Laws', slug:'chem-gaslaws', summary:'Boyle, Charles, combined gas laws.', youtube:['https://youtu.be/W2g2iP83JoI']}
-      ]
-    },
-    { id:'kompan', title:'Komunikasyon at Pananaliksik sa Wika', short:'Filipino communication and research.',
-      lessons:[
-        {title:'Wika: Kahulugan at Kabuluhan', slug:'kompan-wika', summary:'Meaning and importance of language.', youtube:['https://youtu.be/uDIyH89_heY?si=SaSlEjCIRGm0vjrt']},
-        {title:'Konseptong Pangwika', slug:'kompan-konsepto', summary:'Key concepts in linguistics.', youtube:['https://youtu.be/0iBG4rAMapU?si=jrjb3Op_oX4M0kDe']}
-      ]
-    },
-    { id:'genmath', title:'General Mathematics', short:'Functions, rational functions, inequalities.',
-      lessons:[
-        {title:'Functions', slug:'gm-functions', summary:'Definition and types of functions.', youtube:['https://youtu.be/-Pr3NoB9S9k']},
-        {title:'Evaluating Functions', slug:'gm-evaluate', summary:'Plugging values and interpreting.', youtube:['https://youtu.be/9lmKVSFdMHE']},
-        {title:'Operation on Functions', slug:'gm-ops', summary:'Combining and composing functions.', youtube:['https://youtu.be/0Dy2H6kv_3g']}
-      ]
-    },
-    { id:'hope', title:'HOPE', short:'Health-oriented PE and fitness.',
-      lessons:[
-        {title:'The Healthiest and Fittest Me', slug:'hope-fit', summary:'Personal fitness and wellness planning.', youtube:[]},
-        {title:'Set Fitness Goal', slug:'hope-goal', summary:'SMART goals for fitness.', youtube:[]}
-      ]
-    }
+    { id:'eapp', title:'English for Academic & Professional Purposes', short:'Academic writing and presentations.', lessons:[] },
+    { id:'genchem', title:'General Chemistry 1', short:'Properties, substances and gas laws.', lessons:[] },
+    { id:'kompan', title:'Komunikasyon at Pananaliksik sa Wika', short:'Filipino communication and research.', lessons:[] },
+    { id:'genmath', title:'General Mathematics', short:'Functions and more.', lessons:[] },
+    { id:'hope', title:'HOPE', short:'Health-oriented PE and fitness.', lessons:[] }
   ]
 };
 
-/* ---------- helpers & renderers (unchanged except responsive video container) ---------- */
+/* ---------- helpers ---------- */
 const $ = s => document.querySelector(s);
 const $$ = s => Array.from(document.querySelectorAll(s));
 function esc(s){ return String(s||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
 function placeholderDataUrl(text){ text = text || 'Image not found'; return 'data:image/svg+xml;utf8,' + encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='675'><rect fill='#f5f4ff' width='100%' height='100%'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#7a6fb8' font-family='Poppins,Arial' font-size='28'>${text}</text></svg>`); }
-
 function trySourcesOnce(imgEl, sources, fallback){
   if(!imgEl) return;
   if(!Array.isArray(sources) || sources.length === 0){ imgEl.src = fallback || placeholderDataUrl(); return; }
@@ -479,14 +411,12 @@ function trySourcesOnce(imgEl, sources, fallback){
   imgEl.src = sources[0];
 }
 
-function renderSubjectsGrid(){
-  const grid = $('#subjectsList'); if(!grid) return; grid.innerHTML='';
-  (SITE_DATA.subjects || []).forEach(sub=>{
-    const card = document.createElement('div'); card.className='subject-card';
-    card.innerHTML = `<div><h3>${esc(sub.title)}</h3><p class="muted">${esc(sub.short || '')}</p></div><div style="margin-top:12px"><a href="#subject/${sub.id}" data-route class="btn">Open</a></div>`;
-    grid.appendChild(card);
-  });
-}
+/* ---------- templates / renderers ---------- */
+const SUBJECT_CATEGORIES = {
+  "Core Subjects": ['rws','kompan','genmath','hope'],
+  "Applied Subjects": ['emptech','eapp'],
+  "Specialized Subjects": ['precalc','genbio','genchem']
+};
 
 function renderHomeCategories(){
   const container = $('#homeCats'); if(!container) return;
@@ -505,6 +435,7 @@ function renderHomeCategories(){
         const subj = (SITE_DATA.subjects||[]).find(s=>s.id===id);
         const li = document.createElement('li');
         if(subj){
+          // include data-route and href to ensure router picks it up
           li.innerHTML = `<a href="#subject/${subj.id}" data-route>${esc(subj.title)}</a> <span style="color:var(--muted);font-size:13px"> — ${esc(subj.short || '')}</span>`;
         } else {
           li.textContent = id + ' (missing)';
@@ -530,17 +461,12 @@ function renderSubjectsList(){
 
 function renderGallery(){
   const g = $('#galleryGrid'); if(!g) return; g.innerHTML='';
-  const images = SITE_DATA.homeSlides && SITE_DATA.homeSlides.length ? SITE_DATA.homeSlides : [];
+  const images = SITE_DATA.homeSlides || [];
   images.forEach((src,i)=>{
     const d = document.createElement('div'); d.className='thumb';
     const img = document.createElement('img'); img.alt = `gallery ${i+1}`;
     const basename = src.split('/').pop();
-    const candidates = [
-      src,
-      `assets/images/hero/${basename}`,
-      `assets/images/${basename}`,
-      `assets/${basename}`
-    ].filter(Boolean);
+    const candidates = [src, `assets/images/hero/${basename}`, `assets/images/${basename}`, `assets/${basename}`].filter(Boolean);
     trySourcesOnce(img, candidates, placeholderDataUrl());
     d.appendChild(img);
     d.addEventListener('click', ()=> openModal(img.src || src));
@@ -581,36 +507,26 @@ function openModal(src){
 }
 function closeModal(){ modalBackdrop.classList.remove('active'); modalBackdrop.setAttribute('aria-hidden','true'); modalImage.src = ''; }
 
-/* show/hide helpers */
+/* ---------- router & page rendering ---------- */
+function setBreadcrumb(parts){ const el = $('#breadcrumbs'); if(el) el.textContent = parts.join(' > '); }
 function showOnly(id){
   const pages = ['page-home','page-about','page-subjects','page-gallery','page-downloads','page-contact','page-lesson'];
   pages.forEach(p=>{ const el=document.getElementById(p); if(!el) return; el.style.display = (p===id)?'block':'none'; });
   window.scrollTo({top:0,behavior:'smooth'});
 }
-function setBreadcrumb(parts){ const el = $('#breadcrumbs'); if(el) el.textContent = parts.join(' > '); }
 
-/* Page actions */
 function showHome(){ showOnly('page-home'); setBreadcrumb(['Home']); renderHomeCategories(); }
 function showAbout(){ showOnly('page-about'); setBreadcrumb(['About']); }
 function showGallery(){ showOnly('page-gallery'); setBreadcrumb(['Gallery']); renderGallery(); }
 function showDownloads(){ showOnly('page-downloads'); setBreadcrumb(['Downloads']); renderDownloads(); }
 function showContact(){ showOnly('page-contact'); setBreadcrumb(['Contact Us']); }
 
-/* Subjects */
-function showSubjectsList(){
-  showOnly('page-subjects');
-  setBreadcrumb(['Subjects']);
-  $('#subjectTitle').textContent = 'Subjects';
-  $('#subjectDesc').textContent = 'All available subjects. Click Open to view lessons.';
-  $('#subjectsList').style.display = 'grid';
-  $('#lessonsList').style.display = 'none';
-  renderSubjectsList();
-}
+function showSubjectsList(){ showOnly('page-subjects'); setBreadcrumb(['Subjects']); $('#subjectTitle').textContent='Subjects'; $('#subjectDesc').textContent='All available subjects. Click Open to view lessons.'; $('#subjectsList').style.display='grid'; $('#lessonsList').style.display='none'; renderSubjectsList(); }
+
 function showSubject(subjectId){
   const subj = (SITE_DATA.subjects||[]).find(s=>s.id===subjectId);
   if(!subj){ showSubjectsList(); return; }
-  showOnly('page-subjects');
-  setBreadcrumb(['Subjects', subj.title]);
+  showOnly('page-subjects'); setBreadcrumb(['Subjects', subj.title]);
   $('#subjectTitle').textContent = subj.title;
   $('#subjectDesc').textContent = subj.short || '';
   $('#subjectsList').style.display = 'none';
@@ -623,7 +539,6 @@ function showSubject(subjectId){
   });
 }
 
-/* lesson view (responsive video wrapper) */
 function showLesson(subjectId, lessonSlug){
   const subj = (SITE_DATA.subjects||[]).find(s=>s.id===subjectId); if(!subj) return showSubjectsList();
   const lesson = (subj.lessons||[]).find(l=>l.slug===lessonSlug); if(!lesson) return showSubject(subjectId);
@@ -648,21 +563,6 @@ function showLesson(subjectId, lessonSlug){
   }
 }
 
-/* search */
-function doSearch(){
-  const q = ($('#searchInput') && $('#searchInput').value || '').trim().toLowerCase();
-  if(!q){ alert('Type a search term'); return; }
-  for(const s of (SITE_DATA.subjects||[])){
-    if(s.title && s.title.toLowerCase().includes(q)){ location.hash = `#subject/${s.id}`; return; }
-    for(const l of (s.lessons||[])){
-      if((l.title && l.title.toLowerCase().includes(q)) || (l.summary && l.summary.toLowerCase().includes(q))){
-        location.hash = `#lesson/${s.id}/${l.slug}`; return;
-      }
-    }
-  }
-  alert('No results found');
-}
-
 /* router */
 function handleHash(){
   const raw = (location.hash || '').replace(/^#/,'');
@@ -681,13 +581,14 @@ function handleHash(){
   showHome();
 }
 
-/* boot */
+/* ---------- boot & event handling ---------- */
 window.addEventListener('load', ()=>{
-  // logo & hero fallback (primary path updated to assets/images/hero/logo.jpg)
+  // Logo + hero fallback
   trySourcesOnce(document.getElementById('siteLogo'), ['assets/images/hero/logo.jpg','assets/logo.jpg','assets/images/logo.jpg','assets/logo.png'], placeholderDataUrl('Logo not found'));
   trySourcesOnce(document.getElementById('footerLogoImg'), ['assets/images/hero/logo.jpg','assets/logo.jpg','assets/images/logo.jpg','assets/logo.png'], placeholderDataUrl('Logo not found'));
   trySourcesOnce(document.getElementById('heroImg'), SITE_DATA.homeSlides || ['assets/images/hero/gallery1.jpg'], placeholderDataUrl('Hero not found'));
 
+  // initial renders
   renderHomeCategories();
   renderSubjectsList();
   renderGallery();
@@ -700,23 +601,46 @@ window.addEventListener('load', ()=>{
     else { document.body.classList.toggle('sidebar-hidden'); }
   });
 
-  // close mobile sidebar when clicking outside
-  document.addEventListener('click', (e)=> {
+  // Close mobile sidebar on outside click
+  document.addEventListener('click', (e)=>{
     if(window.innerWidth <= 900 && document.body.classList.contains('sidebar-open')){
       const inside = e.target.closest('.sidebar') || e.target.closest('#hamburgerBtn');
       if(!inside) document.body.classList.remove('sidebar-open');
     }
   });
 
-  // navigation & search
+  // Improved navigation click handler:
+  // - Intercept any <a href="#..."> (internal) and set location.hash (prevents default jump)
+  // - Allow external links (mailto:, http(s):, tel:) to behave normally
   document.body.addEventListener('click', (e)=>{
-    const a = e.target.closest('a[data-route]');
-    if(a){ e.preventDefault(); location.hash = (a.getAttribute('href')||'').replace(/^#/,''); return; }
-    if(e.target.closest('#searchBtn')){ e.preventDefault(); doSearch(); return; }
+    const a = e.target.closest('a');
+    if(!a) return;
+
+    const href = a.getAttribute('href') || '';
+    // Skip if link has target _blank or is external
+    if(href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('http://') || href.startsWith('https://')) {
+      return; // allow default
+    }
+
+    if(href.startsWith('#')) {
+      e.preventDefault();
+      const target = href.replace(/^#/,'');
+      // set hash - this triggers hashchange -> handleHash
+      location.hash = target;
+      // close sidebar on mobile for better UX
+      if(document.body.classList.contains('sidebar-open')) document.body.classList.remove('sidebar-open');
+      return;
+    }
   });
-  const si = $('#searchInput'); if(si) si.addEventListener('keydown', (ev)=>{ if(ev.key === 'Enter'){ ev.preventDefault(); doSearch(); } });
+
+  // search enter / button
+  const si = $('#searchInput');
+  si?.addEventListener('keydown', (ev)=>{ if(ev.key === 'Enter'){ ev.preventDefault(); doSearch(); } });
+  $('#searchBtn')?.addEventListener('click', (ev)=>{ ev.preventDefault(); doSearch(); });
 
   window.addEventListener('hashchange', handleHash);
+
+  // Run router once at load (after renders)
   handleHash();
 });
 </script>
